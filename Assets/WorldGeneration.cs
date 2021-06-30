@@ -21,7 +21,7 @@ public class WorldGeneration : MonoBehaviour
     void Start()
     {
         // Check if we have an empty chunkPrefab list
-        if(chunkPrefab.Count == 0)
+        if (chunkPrefab.Count == 0)
         {
             Debug.LogError("No Chunk prefab found on the world generator, please assign some chunks!");
             return;
@@ -36,7 +36,7 @@ public class WorldGeneration : MonoBehaviour
             Debug.Log("We've assigned cameraTransform automatically to the Camera.main");
         }
 
-        
+
     }
 
     // Update is called once per frame
@@ -46,8 +46,8 @@ public class WorldGeneration : MonoBehaviour
         Chunk lastChunk = activeChunks.Peek();
         if (cameraZ >= lastChunk.transform.position.z + lastChunk.chunkLength + despawnDistance)
         {
-        ScanPosition();
-        DeleteLastChunk();
+            ScanPosition();
+            DeleteLastChunk();
         }
     }
 
@@ -70,7 +70,7 @@ public class WorldGeneration : MonoBehaviour
         // Place the object
         if (!chunk)
         {
-            GameObject go = Instantiate(chunkPrefab[randomindex], transform );
+            GameObject go = Instantiate(chunkPrefab[randomindex], transform);
             chunk = go.GetComponent<Chunk>();
         }
 
@@ -90,6 +90,22 @@ public class WorldGeneration : MonoBehaviour
         Chunk chunk = activeChunks.Dequeue();
         chunk.HideChunk();
         chunkPool.Add(chunk);
+    }
+
+    private void ResetWorld()
+    {
+        /*Reset the ChunkSpawn Z*/
+        chunkSpawnZ = firstChunkSpawnPosition;
+
+        for (int i = activeChunks.Count; i != 0; i--)
+        {
+            DeleteLastChunk();
+        }
+
+        for (int i = 0; i < chunkOnScreen; i++)
+        {
+            SpawnNewChunk();
+        }
     }
 
 }
