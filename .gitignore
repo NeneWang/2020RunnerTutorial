@@ -5465,7 +5465,6 @@ FodyWeavers.xsd
 /Library/APIUpdater
 /Library/AnnotationManager
 /Library
-/Assets/WorldGeneration.cs
 /Assets/TutorialInfo/Scripts/Readme.cs
 /Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs
 /Assets/TutorialInfo/Scripts/Editor
