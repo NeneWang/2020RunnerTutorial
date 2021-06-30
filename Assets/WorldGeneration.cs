@@ -61,6 +61,8 @@ public class WorldGeneration : MonoBehaviour
     {
         // Get a random index for which prefab to spawn
 
+        int randomindex = Random.Range(0, Chunk Prefab.count);
+
         // Does it already exist within our pool
 
         // Place the object
