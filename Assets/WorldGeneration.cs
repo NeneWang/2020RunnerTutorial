@@ -61,12 +61,26 @@ public class WorldGeneration : MonoBehaviour
     {
         // Get a random index for which prefab to spawn
 
-        int randomindex = Random.Range(0, Chunk Prefab.count);
+        int randomindex = Random.Range(0, chunkPrefab.Count);
 
         // Does it already exist within our pool
+        Chunk chunk = null;
+
 
         // Place the object
+        if (!chunk)
+        {
+            GameObject go = Instantiate(chunkPrefab[randomindex], transform );
+            chunk = go.GetComponent<Chunk>();
+        }
 
+        //Place the object and show it
+        chunk.transform.position = new Vector3(0, 0, chunkSpawnZ);
+        chunkSpawnZ += chunk.chunkLength;
+
+        //Store the value, to reuse in our pool
+        activeChunks.Enqueue(chunk);
+        chunk.ShowChunks();
 
     }
 
