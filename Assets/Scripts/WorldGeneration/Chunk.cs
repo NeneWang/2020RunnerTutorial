@@ -12,7 +12,7 @@ public class Chunk : MonoBehaviour
         return this;
     }
 
-    public Chunk HideChink()
+    public Chunk HideChunk()
     {
         gameObject.SetActive(false);
         return this;

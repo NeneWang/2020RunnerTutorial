@@ -87,7 +87,9 @@ public class WorldGeneration : MonoBehaviour
 
     private void DeleteLastChunk()
     {
-
+        Chunk chunk = activeChunks.Dequeue();
+        chunk.HideChunk();
+        chunkPool.Add(chunk);
     }
 
 }
